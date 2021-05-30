@@ -72,10 +72,23 @@ let appData = {
     },
     chooseIncome: function(){
         let items = prompt('Что принесет доп доход?(Перечислите через запятую)', '');
+       if (typeof(items) != string || typeof(items) == null || items !="" ){
+        console.log('Введены неправильные данные');
+       } else {
         appData.income = items.split(', '); //превращаем строку в массив
+        appData.income.push(prompt('Может что-то еще?')); //добавление в конец массива
+        appData.income.sort(); //сортировка по буквам
+       }
+       appData.income.forEach(function(itemmassive, i){
+           alert('Способы доп заработка:' + (i+1) + itemmassive);
+       });
         
     }
 };
+//вывод всег объекта appData
+for (let key in appData){
+    console.log("Программа включает в себя данные: " + key + " - " + appData[key]);
+}
 
 
 
